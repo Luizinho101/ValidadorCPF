@@ -13,10 +13,9 @@
 function main(){
 
     const campoCPF = document.getElementById('inputCPF');
+    let minhaCaixa = document.getElementById('resultado');
     
     const valorDigitado = campoCPF.value;
-
-    console.log("O CPF digitado foi: " + valorDigitado);
    
     if (valorDigitado === "") {
         alert("Por favor, digite um CPF!");
@@ -24,17 +23,28 @@ function main(){
     }
 
     let stringL = limpaCPF(valorDigitado);
+
+    if(stringL.length !== 11){
+        minhaCaixa.innerHTML = "CPF deve ter 11 dígitos!";
+        minhaCaixa.classList.add('resultado');
+        return;
+    }
+
     let arrayChar =converteChar(stringL);
     let convertParaInteiro = convertInteiro(arrayChar);
+
+    if (ehSequenciaRepetida(convertParaInteiro)) {
+        minhaCaixa.innerHTML = "CPF Inválido (Sequência repetida)!";
+        minhaCaixa.classList.add('resposta');
+        return;
+    }
+
     let checaPrimeiroDigito = validaPrimeiroNumero(convertParaInteiro, 10);
     let checaSegundoDigito = validaSegundoNumero(convertParaInteiro, 11);
-
     let respostaCompleta = respostaTratada(checaPrimeiroDigito, checaSegundoDigito, convertParaInteiro);
 
-   
-        document.getElementById('resultado').innerHTML = respostaCompleta;
-
-    
+    minhaCaixa.innerHTML = respostaCompleta;
+    minhaCaixa.classList.add('resposta');
 }
 
 function limpaCPF(cpfSujo){
@@ -92,7 +102,13 @@ function validaSegundoNumero(array, valor2){
 function respostaTratada(digito1 , digito2,array){
     let resposta;
     if(array[9] == digito1 && array[10] == digito2){
-        resposta = "Válido";
+        resposta = "CPF Válido !!!";
+    }else{
+        resposta = "CPF Inválido !!!";
     }
     return resposta;
+}
+
+function ehSequenciaRepetida(array) {
+    return array.every(elemento => elemento === array[0]);
 }
