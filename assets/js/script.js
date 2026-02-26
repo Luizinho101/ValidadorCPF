@@ -48,7 +48,7 @@ function main(){
 }
 
 function limpaCPF(cpfSujo){
-    const stringLimpa = cpfSujo.replace(/[\.\-\+\@\$\%\*_\'\`\=\°\?\^\~\¨\{\}\[\]\&\(\)\']/g, '');
+    const stringLimpa = cpfSujo.replace(/\D/g, '');
     return stringLimpa;
 }
 
