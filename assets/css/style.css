@@ -5,13 +5,9 @@
     box-sizing: border-box;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
-
-
-
 body {
     line-height: 1.6;
     background-color: #ffffff;
-   
 }
 
 main{
@@ -22,7 +18,9 @@ main{
 }
 .container{
     padding: 60px;
-    background-color: rgb(201, 201, 208);
+    background-color: rgb(234, 234, 241);
+
+    box-shadow: 5px 5px 15px rgba(92, 87, 87, 0.3);
     border-radius: 10px;
     display: flex;
     flex-direction: column;
@@ -33,6 +31,7 @@ main{
     display: block;
     padding: 10px;
     background-color: rgb(114, 212, 15);
+    box-shadow:5px 5px 15px rgba(32, 31, 31, 0.3);
     border-radius: 10px;
     text-decoration: none;
     text-align: center;
@@ -40,6 +39,12 @@ main{
     font-weight: bold;
     border: none;
     cursor: pointer;
-    
+}
+
+.resposta{
+    box-shadow: 5px 5px 15px rgba(92, 87, 87, 0.3);
+    color: black;
+    padding: 5px 20px;
+    border-radius: 8px;
 }
 
